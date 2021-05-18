@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+string exp="",exp1="";
+cout<<"Enter an arithmetic expression : "<<endl;
+cin>>exp;
+cout<<endl;
+int l=exp.length();
+int j=0;
+for(int i=0;i<l;i++)
+{
+if(exp[i]=='+' || exp[i]=='-' )
+{
+if(exp[i+2]=='/' || exp[i+2]=='*')
+{
+reverse(exp.begin(), exp.end());
+j=l-i-1;
+for(int k=0;k<j;k++)
+{
+exp1=exp1+exp[k];
+}
+reverse(exp1.begin(), exp1.end());
+cout<<"Three address code for the expression is : "<<endl<<"temp = "<<exp1<<endl<<"temp1 = "<<exp[j+1]<<exp[j]<<"temp"<<endl;
+break;
+}
+else
+{
+for(int k=0;k<i+2;k++)
+{
+exp1=exp1+exp[k];
+}
+cout<<"Three address code for the expression is : "<<endl<<"temp = "<<exp1<<endl<<"temp1 = temp"<<exp[i+2]<<exp[i+3]<<endl;
+break;
+}
+}
+else if(exp[i]=='/'||exp[i]=='*')
+{
+for(int k=0;k<i+2;k++)
+{
+exp1=exp1+exp[k];
+}
+cout<<"Three address code for the expression is : "<<endl<<"temp = "<<exp1<<endl<<"temp1 = temp"<<exp[i+2]<<exp[i+3]<<endl;
+break;
+}
+}
+}
